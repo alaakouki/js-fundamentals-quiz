@@ -1,3 +1,77 @@
+:root {
+    --dark-color: #2f048c;
+    --off-white: #f2f2f2;
+    --blue-color: #0583f2;
+}
+
+
+
+
+
 *{
     box-sizing: border-box;
+    font-family: sans-serif, Helvetica, Arial;
+    /* margin: 0; */
+    /* padding: 0; */
+}
+
+
+/* #highscore-btn {
+    border: none;
+    background-color: none;
+
+} */
+
+
+.main-page {
+    margin-top: 10vh;
+display: flex;
+flex-direction: column;
+align-items: center;
+}
+
+.header-container {
+    display: flex;
+    justify-content: space-between;
+}
+
+h1, h2 {
+    color: var(--blue-color);
+}
+
+#start-btn {
+    font-size: 25px;
+    line-height: 36px;
+    padding: 8px 12px;
+    margin-top: 15px;
+    /* font-weight: 500; */
+    color: var(--off-white);
+    background-color: var(--dark-color);
+    border-radius: 5px;
+    /* outline: none; */
+    border: none;
+    cursor: pointer;
+}
+
+ul {
+    list-style-type: none;
+}
+
+ul li {
+    margin-top: 20px;
+}
+
+.is-it-correct {
+    display: flex;
+    justify-content: flex-start;
+    margin-top: 24px;
+    border-top: 2px solid lightgray;
+}
+
+.if-correct {
+    color: green;
+}
+
+.if-wrong {
+    color: red;
 }
