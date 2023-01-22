@@ -1,3 +1,31 @@
+// top header and main page variables
+var scoresLink = document.getElementById("highscore-lnk");
+var timer = document.querySelector("#timer");
+var secondLeft = 75;
+var welcomePage = document.getElementById("welcome-page");
+var startQuizBtn = document.querySelector("#start-btn");
+
+// for question pages
+var questionAppearance = document.querySelector("#question-container");
+var questionEl = document.getElementById("the-question");
+var ansA = document.getElementById("choice-a");
+var ansB = document.getElementById("choice-b");
+var ansC = document.getElementById("choice-c");
+var ansD = document.getElementById("choice-d");
+//   whatever user choosed should navigate to next question
+var toNextQuestion = document.querySelector(".ans");
+
+var currentQuestion = 0;
+
+// for scores and scores page
+var userScore = 0;
+var ttlScores;
+var initialsBtn;
+var goBackBtn;
+var clearHscoresBtn;
+//    need calculation function to calculate scores
+
+// arrey for all quiz questions and 4 answer options
 var quizQuestions = [
 
 {
@@ -47,10 +75,10 @@ correctAnswer: "d"
 
 ];
 
-var startQuiz = document.querySelector("#start-btn");
-var secondLeft = 75;
 
 
+
+// If user press start quiz btn
 
 function beginTimer() {
   var timerInterval = setInterval(function() {
@@ -62,15 +90,61 @@ if(secondLeft===0) {
   // sendMessage();
 }
   }, 1000);
+};
+
+
+startQuizBtn.addEventListener ("click", startGame);
+
+function startGame() {
+  beginTimer();
+  console.log("Game started");
+  welcomePage.classList.add("hide");
+  // startQuizBtn.classList.add("hide");
+  questionAppearance.classList.remove("hide");
+  questionAppearance.classList.add("activeQuestion");
 }
 
-startQuiz.addEventListener ("click", function {
-  beginTimer();
-});
 
-// function nextQuestion() {
-    
-// }
+
+// function firstQuestionAppr( {
+//   questionAppearance.classList.add("activeQuestion"); // show the 1st question
+//     beginTimer();
+//   });
+  
+
+
+
+
+// loadQuiz();
+
+function loadQuiz() {
+
+  var currentQuizData = quizQuestions[currentQuestion];
+  // questionEl.innerText = currentQuizData.question;
+  ansA.innerText = currentQuizData.a;
+  ansB.innerText = currentQuizData.b;
+  ansC.innerText = currentQuizData.c;
+  ansD.innerText = currentQuizData.d;
+
+};
+
+
+toNextQuestion.addEventListener("click", function() {
+  currentQuestion++;
+
+  if(currentQuestion < quizQuestions.length) {
+  loadQuiz();
+} // else {}
+}
+);
+
+
+
+
+
+
+
+
 
 
 
@@ -79,54 +153,4 @@ startQuiz.addEventListener ("click", function {
 // event.preventDefault();
 
 
-var secondsLeft = 10;
 
-function setTime() {
-  // Sets interval in variable
-  var timerInterval = setInterval(function() {
-    secondsLeft--;
-    timeEl.textContent = secondsLeft + " seconds left till colorsplosion.";
-
-    if(secondsLeft === 0) {
-      // Stops execution of action at set interval
-      clearInterval(timerInterval);
-      // Calls function to create and append image
-      sendMessage();
-    }
-
-  }, 1000);
-}
-
-// Function to create and append colorsplosion image
-function sendMessage() {
-  timeEl.textContent = " ";
-  var imgEl = document.createElement("img");
-  imgEl.setAttribute("src", "images/image_1.jpg");
-  mainEl.appendChild(imgEl);
-
-}
-
-setTime();
-
-
-
-// // Access toggle switch HTML element
-// var themeSwitcher = document.querySelector("#theme-switcher");
-// var container = document.querySelector(".container");
-
-// // Set default mode to dark
-// var mode = "dark";
-
-// // Listen for a click event on toggle switch
-// themeSwitcher.addEventListener("click", function() {
-//   // If mode is dark, apply light background
-//   if (mode === "dark") {
-//     mode = "light";
-//     container.setAttribute("class", "light");
-//   }
-//   // If mode is light, apply dark background 
-//   else {
-//     mode = "dark";
-//     container.setAttribute("class", "dark");
-//   }
-// });
