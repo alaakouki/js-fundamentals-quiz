@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,59 +8,71 @@
     <link rel="stylesheet" href="./assets/css/style.css">
     <title>JS fundamentals quiz</title>
 </head>
+
 <body>
-    
-<header>
 
-    <div class="header-container">
-        <button id="highscore-btn">View high scores</button>
-        <p id="timer">Time: 0</p>
+    <header>
+
+        <div class="header-container">
+            <a href="#" id="highscore-lnk">View high scores</a>
+            <!-- <button id="highscore-btn">View high scores</button> -->
+            <p id="timer">0</p>
+        </div>
+
+    </header>
+
+
+    <div class="container">
+
+        <!-- Main page before quiz begin -->
+        <div class="main-page">
+            <div id="welcome-page" class="">
+                <h1>JS Fundamentals Quiz Challenge</h1>
+                <p>
+                    Try to answer the following JS fundamentals code-related questions within the time limit.
+                    Keep in mind that incorrect answers will penaize your score/time by ten seconds!
+                </p>
+            
+                <!-- start quiz button -->
+                <button id="start-btn">Start Quiz</button>
+            </div>
+
+
+            <!-- question elements to be replaced through JavaScript -->
+            <div id="question-container" class="hide">
+                <h2 id="the-question">question</h2>
+                <div class="answer-list">
+                    <button class="ans" id="choice-a">
+                        A
+                    </button>
+                    <button class="ans" id="choice-b">
+                        B
+                    </button>
+                    <button class="ans" id="choice-c">
+                        C
+                    </button>
+                    <button class="ans" id="choice-d">
+                        D
+                    </button>
+                </div>
+            </div>
+
+        </div>
     </div>
 
-</header>
+    <footer>
+        <div class="is-it-correct">
+            <div>
+                <p class="if-correct">Your previous answer is <span id="correct">Correct!</span></p>
+                <p class="if-wrong">Your previous answer is <span id="wrong">Wrong!</span></p>
+            </div>
+        </div>
 
-<!-- Main page before quiz begin -->
-<div class="main-page">
-<h1>JS Fundamentals Quiz Challenge</h1>
-<p>
-    Try to answer the following JS fundamentals code-related questions within the time limit.
-    <br>
-    Keep in mind that incorrect answers will penaize your score/time by ten seconds!
-</p>
-<button id="start-btn">Start Quiz</button>
-
-
-<!-- question elements to be replaced through JavaScript -->
-
-<!-- <div class="question-container">
-    
-    <h2 class="the-question"></h2>
-    
-    <ul class="answer-list">
-        <li class="ans-a">a</li>
-        <li class="ans-b">b</li>
-        <li class="ans-c">c</li>
-        <li class="ans-d">d</li>
-    </ul>
-    
-
-</div> -->
-
-
-<div class="is-it-correct">
-    <div>
-        <h3 class="if-correct">Correct</h3>
-        <h3 class="if-wrong"></h3>
-    </div>
-</div>
+    </footer>
 
 
 
-</div>
-
-
-
-
-<script src="script.js"></script>
+    <script src="script.js"></script>
 </body>
+
 </html>
