@@ -19,6 +19,9 @@ var currentQuestion = 0;
 
 // for scores and scores page
 var userScore = 0;
+var correctAnsrScore = + 20;
+var wrongAnsrScore = 0;
+var scndLess = - 10;
 var ttlScores;
 var initialsBtn;
 var goBackBtn;
@@ -105,7 +108,6 @@ function startGame() {
 }
 
 
-
 // function firstQuestionAppr( {
 //   questionAppearance.classList.add("activeQuestion"); // show the 1st question
 //     beginTimer();
@@ -120,7 +122,7 @@ function startGame() {
 function loadQuiz() {
 
   var currentQuizData = quizQuestions[currentQuestion];
-  // questionEl.innerText = currentQuizData.question;
+  questionEl.innerText = currentQuizData.question;
   ansA.innerText = currentQuizData.a;
   ansB.innerText = currentQuizData.b;
   ansC.innerText = currentQuizData.c;
@@ -128,15 +130,24 @@ function loadQuiz() {
 
 };
 
+function getSelected() {
+  var answers = document.querySelectorAll("ans");
+  answers.forEach((ans) => {
+      console.log(ans.value);  
+  });
+}
 
 toNextQuestion.addEventListener("click", function() {
   currentQuestion++;
+  getSelected();
+
+
 
   if(currentQuestion < quizQuestions.length) {
   loadQuiz();
 } // else {}
-}
-);
+
+});
 
 
 
