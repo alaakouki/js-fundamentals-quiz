@@ -108,6 +108,7 @@ function startGame() {
   welcomePage.style.display= "none";
   questionAppearance.style.visibility= "visible";
   questionAppearance.classList.add("activeQuestion");
+  loadQuiz();
 }
 
 
