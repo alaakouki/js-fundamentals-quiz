@@ -85,7 +85,7 @@ correctAnswer: "d"
 
 function beginTimer() {
   var timerInterval = setInterval(function() {
-
+timer.textContent = "Time: " + secondLeft;
 secondLeft--;
 
 if(secondLeft===0) {
@@ -101,9 +101,12 @@ startQuizBtn.addEventListener ("click", startGame);
 function startGame() {
   beginTimer();
   console.log("Game started");
-  welcomePage.classList.add("hide");
+  // welcomePage.classList.add("hide");
   // startQuizBtn.classList.add("hide");
-  questionAppearance.classList.remove("hide");
+  // questionAppearance.classList.remove("hide");
+  // welcomePage.style.visibility= "hidden";
+  welcomePage.style.display= "none";
+  questionAppearance.style.visibility= "visible";
   questionAppearance.classList.add("activeQuestion");
 }
 
@@ -122,11 +125,11 @@ function startGame() {
 function loadQuiz() {
 
   var currentQuizData = quizQuestions[currentQuestion];
-  questionEl.innerText = currentQuizData.question;
-  ansA.innerText = currentQuizData.a;
-  ansB.innerText = currentQuizData.b;
-  ansC.innerText = currentQuizData.c;
-  ansD.innerText = currentQuizData.d;
+  questionEl.textContent = currentQuizData.question;
+  ansA.textContent = currentQuizData.a;
+  ansB.textContent = currentQuizData.b;
+  ansC.textContent = currentQuizData.c;
+  ansD.textContent = currentQuizData.d;
 
 };
 
