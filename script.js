@@ -19,7 +19,7 @@ var currentQuestion = 0;
 
 // for scores and scores page
 var userScore = 0;
-var correctAnsrScore = + 20;
+var correctAnsrScore = 0;
 var wrongAnsrScore = 0;
 var scndLess = - 10;
 var ttlScores;
@@ -81,7 +81,7 @@ correctAnswer: "d"
 
 
 
-// If user press start quiz btn
+// User pressed start quiz btn, time will start and quiz begin
 
 function beginTimer() {
   var timerInterval = setInterval(function() {
@@ -111,15 +111,10 @@ function startGame() {
   loadQuiz();
 }
 
-
 // function firstQuestionAppr( {
 //   questionAppearance.classList.add("activeQuestion"); // show the 1st question
 //     beginTimer();
 //   });
-  
-
-
-
 
 // loadQuiz();
 
@@ -134,10 +129,24 @@ function loadQuiz() {
 
 };
 
+if ( quizQuestions[0].correctAnswer === c) {
+correctAnsrScore +20;
+
+  // question: "Commonly used data types Do Not Include:",
+  // a: "strings",
+  // b: "booleans",
+  // c: "alerts",
+  // d: "numbers",
+  // correctAnswer: "c"
+
+}
+
+
 function getSelected() {
   var answers = document.querySelectorAll("ans");
   answers.forEach((ans) => {
-      console.log(ans.value);  
+      console.log(ans.value);
+      toNextQuestion();  
   });
 }
 
@@ -154,9 +163,21 @@ toNextQuestion.addEventListener("click", function() {
 });
 
 
+// function mainScreen(currentQuestion) {
+// startScreenEl.innerHTML = "";
+// createUl.innerHTML = "";
+// for ( var i=0; i < quizQuestions.length; i++) {
+// var userQuestion = quizQuestions[currentQuestion].question;
+// var userMultiChoice = quizQuestions[currentQuestion].querySelectorAll("ans");
+// startScreenEl.textContent = userQuestion;
 
+// }
+// }
 
-
+// userMultiChoice.forEach( function (newItem) {
+  
+// }
+// )
 
 
 
