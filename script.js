@@ -6,6 +6,7 @@ var welcomePage = document.getElementById("welcome-page");
 // var startQuizBtn = document.querySelector("#start-btn");
 
 var start = document.getElementById("start-btn");
+var timerInterval = 0;
 
 // quiz questions variables
 var questionAppearance = document.querySelector("#question-container");
@@ -14,6 +15,10 @@ var choiceA = document.getElementById("A");
 var choiceB = document.getElementById("B");
 var choiceC = document.getElementById("C");
 var choiceD = document.getElementById("D");
+
+var score = 0;
+var answerIsCorrect = document.querySelector(".correct-hide");
+var answerIsWrong = document.querySelector(".wrong-hide");
 
 // // variables of scores and high scores page
 // var scoreContainer = document.getElementById("scoreContainer");
@@ -97,9 +102,6 @@ function renderQuestion(){
 
 }
 
-var score = 0;
-// answerIsCorrect();
-// answerIsWrong();
 
 function checkAnswer(answer) {
   answer = answer.toLowerCase();
@@ -107,10 +109,21 @@ if (quizQuestions[runningQuestionIndex].correct == answer) {
   console.log("good");
   score = score+20;
 
+  answerIsCorrect.style.display= "block";
+  answerIsCorrect.style.visibility = "visible";
+  answerIsWrong.style.visibility = "hidden";
+  answerIsWrong.style.display= "none";
+  
 } else {
   // pelanty for choosing wrong answer
   console.log("bad");
   secondLeft = secondLeft -10;
+
+  answerIsWrong.style.visibility = "visible";
+  answerIsWrong.style.display= "block";
+  answerIsCorrect.style.visibility = "hidden";
+  answerIsCorrect.style.display= "none";
+  
 }
 
 if (runningQuestionIndex < lastQuestionIndex) {
@@ -144,7 +157,7 @@ function startGame() {
 // Time limit will start when user start the Quiz
 
 function beginTimer() {
-  var timerInterval = setInterval(function() {
+  timerInterval = setInterval(function() {
 timer.textContent = "Time: " + secondLeft;
 secondLeft--;
 

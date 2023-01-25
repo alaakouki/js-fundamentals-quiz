@@ -77,9 +77,15 @@ body {
 }
 
 
-.correct-hide,
+.correct-hide {
+    /* display: none; */
+    visibility: hidden;
+}
+
 .wrong-hide {
-    display: none;
+    /* display: none; */
+    visibility: hidden;
+
 }
 
 h1, h2 {
