@@ -1,19 +1,23 @@
 // top header and main page variables
-var scoresLink = document.getElementById("highscore-lnk");
+var highScoreLink = document.getElementById("highscore-lnk");
 var timer = document.querySelector("#timer");
 var secondLeft = 75;
 var welcomePage = document.getElementById("welcome-page");
-var startQuizBtn = document.querySelector("#start-btn");
+// var startQuizBtn = document.querySelector("#start-btn");
 
-// for question pages
+var start = document.getElementById("start-btn");
+
+// quiz questions variables
 var questionAppearance = document.querySelector("#question-container");
-var questionEl = document.getElementById("the-question");
-var ansA = document.getElementById("choice-a");
-var ansB = document.getElementById("choice-b");
-var ansC = document.getElementById("choice-c");
-var ansD = document.getElementById("choice-d");
-//   whatever user choosed should navigate to next question
-var toNextQuestion = document.querySelector(".ans");
+var question = document.getElementById("question");
+var choiceA = document.getElementById("A");
+var choiceB = document.getElementById("B");
+var choiceC = document.getElementById("C");
+var choiceD = document.getElementById("D");
+
+// // variables of scores and high scores page
+// var scoreContainer = document.getElementById("scoreContainer");
+
 
 var currentQuestion = 0;
 
@@ -21,67 +25,121 @@ var currentQuestion = 0;
 var userScore = 0;
 var correctAnsrScore = 0;
 var wrongAnsrScore = 0;
-var scndLess = - 10;
+// var scndLess = -10;
 var ttlScores;
 var initialsBtn;
 var goBackBtn;
 var clearHscoresBtn;
-//    need calculation function to calculate scores
+
 
 // arrey for all quiz questions and 4 answer options
 var quizQuestions = [
 
-{
+  {
+  
+      question: "Commonly used data types Do Not Include:",
+      choiceA: "strings",
+      choiceB: "booleans",
+      choiceC: "alerts",
+      choiceD: "numbers",
+      correct: "c"
+      
+      }, {
+      
+      question: "The condition in an if / else statement is enclosed with _____.",
+      choiceA: "quotes",
+      choiceB: "curly brackets",
+      choiceC: "parenthsis",
+      choiceD: "square brackets",
+      correct: "c"
+      
+      }, {
+      
+      question: "Arrays in JavaScript can be used to store _____.",
+      choiceA: "numbers and strings",
+      choiceB: "other arrays",
+      choiceC: "booleans",
+      choiceD: "all of the above",
+      correct: "d"
+      
+      }, {
+      
+      question: "String values must be enclosed within _____ when being assigned to variables.",
+      choiceA: "commas",
+      choiceB: "curly brackets",
+      choiceC: "quotes",
+      choiceD: "parenthesis",
+      correct: "c"
+      
+      }, {
+          question: "A very useful tool used during development and debugging for printing content to the debugger is:",
+      choiceA: "JavaScript",
+      choiceB: "terminal/bash",
+      choiceC: "for loops",
+      choiceD: "console.log",
+      correct: "d"
+      }
+  
+  ]
 
-question: "Commonly used data types Do Not Include:",
-a: "strings",
-b: "booleans",
-c: "alerts",
-d: "numbers",
-correctAnswer: "c"
 
-}, {
+  var lastQuestionIndex = quizQuestions.length - 1;
+var runningQuestionIndex = 0;
 
-question: "The condition in an if / else statement is enclosed with _____.",
-a: "quotes",
-b: "curly brackets",
-c: "parenthsis",
-d: "square brackets",
-correctAnswer: "c"
+function renderQuestion(){
+    var q = quizQuestions[runningQuestionIndex];
 
-}, {
+    question.innerHTML = "<p>" + q.question + "</p>" ;
+    choiceA.innerHTML = q.choiceA;
+    choiceB.innerHTML = q.choiceB;
+    choiceC.innerHTML = q.choiceC;
+    choiceD.innerHTML = q.choiceD;
 
-question: "Arrays in JavaScript can be used to store _____.",
-a: "numbers and strings",
-b: "other arrays",
-c: "booleans",
-d: "all of the above",
-correctAnswer: "d"
-
-}, {
-
-question: "String values must be enclosed within _____ when being assigned to variables.",
-a: "commas",
-b: "curly brackets",
-c: "quotes",
-d: "parenthesis",
-correctAnswer: "c"
-
-}, {
-    question: "A very useful tool used during development and debugging for printing content to the debugger is:",
-a: "JavaScript",
-b: "terminal/bash",
-c: "for loops",
-d: "console.log",
-correctAnswer: "d"
 }
 
-];
+var score = 0;
+// answerIsCorrect();
+// answerIsWrong();
+
+function checkAnswer(answer) {
+if (quizQuestions[runningQuestionIndex].correct == answer) {
+    score+20;
+    // answerIsCorrect();
+
+} else {
+  score +0;
+    // answerIsWrong();
+}
+
+if (runningQuestionIndex < lastQuestionIndex) {
+    runningQuestionIndex++;
+    // questionRender();
+    renderQuestion();
+
+} else {
+  clearInterval(timerInterval);
+    scoreRender();
+
+}
+
+}
+
+
+// To start Quiz game
+start.addEventListener ("click", startGame);
+
+function startGame() {
+  beginTimer();
+  console.log("Game started");
+  welcomePage.style.display= "none";
+  questionAppearance.style.visibility= "visible";
+  questionAppearance.classList.add("activeQuestion");
+  renderQuestion();
+}
 
 
 
-
-// User pressed start quiz btn, time will start and quiz begin
+// Time limit will start when user start the Quiz
 
 function beginTimer() {
   var timerInterval = setInterval(function() {
@@ -90,103 +148,25 @@ secondLeft--;
 
 if(secondLeft===0) {
   clearInterval(timerInterval);
-  // sendMessage();
+  sendMessage();
 }
   }, 1000);
 };
 
-
-startQuizBtn.addEventListener ("click", startGame);
-
-function startGame() {
-  beginTimer();
-  console.log("Game started");
-  // welcomePage.classList.add("hide");
-  // startQuizBtn.classList.add("hide");
-  // questionAppearance.classList.remove("hide");
-  // welcomePage.style.visibility= "hidden";
-  welcomePage.style.display= "none";
-  questionAppearance.style.visibility= "visible";
-  questionAppearance.classList.add("activeQuestion");
-  loadQuiz();
+function sendMessage() {
+  timer.textContent = "It's Over!";
 }
-
-// function firstQuestionAppr( {
-//   questionAppearance.classList.add("activeQuestion"); // show the 1st question
-//     beginTimer();
-//   });
-
-// loadQuiz();
-
-function loadQuiz() {
-
-  var currentQuizData = quizQuestions[currentQuestion];
-  questionEl.textContent = currentQuizData.question;
-  ansA.textContent = currentQuizData.a;
-  ansB.textContent = currentQuizData.b;
-  ansC.textContent = currentQuizData.c;
-  ansD.textContent = currentQuizData.d;
-
-};
-
-if ( quizQuestions[0].correctAnswer === c) {
-correctAnsrScore +20;
-
-  // question: "Commonly used data types Do Not Include:",
-  // a: "strings",
-  // b: "booleans",
-  // c: "alerts",
-  // d: "numbers",
-  // correctAnswer: "c"
-
-}
-
-
-function getSelected() {
-  var answers = document.querySelectorAll("ans");
-  answers.forEach((ans) => {
-      console.log(ans.value);
-      toNextQuestion();  
-  });
-}
-
-toNextQuestion.addEventListener("click", function() {
-  currentQuestion++;
-  getSelected();
-
-
-
-  if(currentQuestion < quizQuestions.length) {
-  loadQuiz();
-} // else {}
-
-});
-
-
-// function mainScreen(currentQuestion) {
-// startScreenEl.innerHTML = "";
-// createUl.innerHTML = "";
-// for ( var i=0; i < quizQuestions.length; i++) {
-// var userQuestion = quizQuestions[currentQuestion].question;
-// var userMultiChoice = quizQuestions[currentQuestion].querySelectorAll("ans");
-// startScreenEl.textContent = userQuestion;
-
-// }
-// }
-
-// userMultiChoice.forEach( function (newItem) {
-  
-// }
-// )
-
-
-
-
-
-
 
 
 // event.preventDefault();
 
 
 
+// score render
+function scoreRender () {
+  scoreContainer.style.display = "block";
+  let scorePercent = Math.round(100 * score/quizQuestions.length);
+
+  scoreContainer.innerHTML = "<p>" + scorePercent + "%</p>";
+scoreRender();
+}
