@@ -14,8 +14,7 @@
     <header>
 
         <div class="header-container">
-            <a href="#" id="highscore-lnk">View high scores</a>
-            <!-- <button id="highscore-btn">View high scores</button> -->
+            <a href="highScore.html" id="highscore-lnk">View high scores</a>
             <p id="timer">Time: 0</p>
         </div>
 
@@ -32,7 +31,7 @@
                     Try to answer the following JS fundamentals code-related questions within the time limit.
                     Keep in mind that incorrect answers will penaize your score/time by ten seconds!
                 </p>
-            
+
                 <!-- start quiz button -->
                 <button id="start-btn">Start Quiz</button>
             </div>
@@ -40,23 +39,24 @@
 
             <!-- question elements to be replaced through JavaScript -->
             <div id="question-container" class="hide">
-                <h2 id="the-question">
+                <h2 id="question">
                     question
 
                 </h2>
-                <div class="answer-list">
-                    <button class="ans" id="choice-a">
+                <div class="answer-list choices">
+
+                    <div class="choice" id="A" onclick="checkAnswer('A')">
                         A
-                    </button>
-                    <button class="ans" id="choice-b">
+                    </div>
+                    <div class="choice" id="B" onclick="checkAnswer('B')">
                         B
-                    </button>
-                    <button class="ans" id="choice-c">
+                    </div>
+                    <div class="choice" id="C" onclick="checkAnswer('C')">
                         C
-                    </button>
-                    <button class="ans" id="choice-d">
+                    </div>
+                    <div class="choice" id="D" onclick="checkAnswer('D')">
                         D
-                    </button>
+                    </div>
                 </div>
             </div>
 
