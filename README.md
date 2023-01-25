@@ -9,8 +9,8 @@ Enjoy your time with JavaScript fundamentals quiz, choose the correct answers wi
 
 ## Mock-up
  js-fundamentals-quiz webpage URL:
- https:
+ https://alaakouki.github.io/js-fundamentals-quiz/
 
 The following image is how js fundamentals quiz webpage shows to
 users on desktop screens:
-![alt js-fundamentals-quiz-screenshot](./assets/images/.png)
+![alt js-fundamentals-quiz-screenshot](./assets/images/js-fundamentals-quiz-screenshot.png)
