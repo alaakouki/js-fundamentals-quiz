@@ -102,13 +102,15 @@ var score = 0;
 // answerIsWrong();
 
 function checkAnswer(answer) {
+  answer = answer.toLowerCase();
 if (quizQuestions[runningQuestionIndex].correct == answer) {
-    score+20;
-    // answerIsCorrect();
+  console.log("good");
+  score = score+20;
 
 } else {
-  score +0;
-    // answerIsWrong();
+  // pelanty for choosing wrong answer
+  console.log("bad");
+  secondLeft = secondLeft -10;
 }
 
 if (runningQuestionIndex < lastQuestionIndex) {
