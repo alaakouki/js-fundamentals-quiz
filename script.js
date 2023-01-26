@@ -3,7 +3,7 @@ var highScoreLink = document.getElementById("highscore-lnk");
 var timer = document.querySelector("#timer");
 var secondLeft = 75;
 var welcomePage = document.getElementById("welcome-page");
-// var startQuizBtn = document.querySelector("#start-btn");
+
 
 var start = document.getElementById("start-btn");
 var timerInterval = 0;
@@ -21,8 +21,8 @@ var answerIsCorrect = document.querySelector(".correct-hide");
 var answerIsWrong = document.querySelector(".wrong-hide");
 
 // // variables of scores and high scores page
-// var scoreContainer = document.getElementById("scoreContainer");
-
+var scoreContainer = document.getElementById("scoreContainer");
+var finalScore = document.querySelector(".final-score");
 
 var currentQuestion = 0;
 
@@ -30,10 +30,7 @@ var currentQuestion = 0;
 var userScore = 0;
 var correctAnsrScore = 0;
 var wrongAnsrScore = 0;
-// var scndLess = -10;
-var ttlScores;
-var initialsBtn;
-var goBackBtn;
+var initialsBtn = document.querySelector("initials-btn");
 var clearHscoresBtn;
 
 
@@ -133,8 +130,8 @@ if (runningQuestionIndex < lastQuestionIndex) {
 
 } else {
   clearInterval(timerInterval);
-    scoreRender();
-
+    // scoreRender();
+console.log(score);
 }
 
 }
@@ -170,18 +167,29 @@ if(secondLeft===0) {
 
 function sendMessage() {
   timer.textContent = "It's Over!";
+  console.log(score);  
+  scoreContainer();
 }
+
+
+function scoreContainer() {
+
+  questionAppearance.style.visibility = "hiddin";
+  questionAppearance.style.display= "none";
+
+  answerIsWrong.style.visibility = "hidden";
+  answerIsWrong.style.display= "none";
+
+  answerIsCorrect.style.visibility = "hidden";
+  answerIsCorrect.style.display= "none";
+
+  scoreContainer.style.visibility = "visible";
+  scoreContainer.style.display= "flex";
+  finalScore.innerHTML = "Your final score is " + score;
+  scoreContainer();
+}
+
+
 
 
 // event.preventDefault();
-
-
-
-// score render
-function scoreRender () {
-  scoreContainer.style.display = "block";
-  let scorePercent = Math.round(100 * score/quizQuestions.length);
-
-  scoreContainer.innerHTML = "<p>" + scorePercent + "%</p>";
-scoreRender();
-}

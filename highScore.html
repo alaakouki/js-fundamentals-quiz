@@ -1,20 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./assets/css/style.css">
     <title>JS quiz high score</title>
 </head>
-<body>
-    
-    <div id="scoreContainer">
-        <h2>It's Over!</h2>
-        <h3>High scores</h3>
 
-        <button class="back-btn">Go back</button>
-        <button class="clear-highScore-btn">Clear high scores</button>
+
+<header id="hs-header">
+
+    <div class="header-container">
+        <a href="highScore.html" id="highscore-lnk">View high scores</a>
+        <p id="timer">Time: 0</p>
     </div>
 
+</header>
+
+<body>
+
+    <div class="hs-container">
+    
+
+
+
+    <h1>Players high scores:</h1>
+    <ol id="scores-list"></ol>
+<div class="buttons">
+    <button class="return-btn"><a href="index.html" class="return-btn">Go back</a></button>
+    <button class="clear-highScore-btn">Clear high scores</button>
+</div>
+
+    </div>
+
+    <script src="highScore.js"></script>
 </body>
+
 </html>
