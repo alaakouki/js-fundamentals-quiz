@@ -21,7 +21,7 @@ var answerIsCorrect = document.querySelector(".correct-hide");
 var answerIsWrong = document.querySelector(".wrong-hide");
 
 // // variables of scores and high scores page
-var scoreContainer = document.getElementById("scoreContainer");
+var scoreContainerEl = document.getElementById("scoreContainer");
 var finalScore = document.querySelector(".final-score");
 
 var currentQuestion = 0;
@@ -123,15 +123,17 @@ if (quizQuestions[runningQuestionIndex].correct == answer) {
   
 }
 
+
+
 if (runningQuestionIndex < lastQuestionIndex) {
     runningQuestionIndex++;
-    // questionRender();
     renderQuestion();
 
 } else {
   clearInterval(timerInterval);
-    // scoreRender();
 console.log(score);
+scoreContainer();
+
 }
 
 }
@@ -161,6 +163,7 @@ secondLeft--;
 if(secondLeft===0) {
   clearInterval(timerInterval);
   sendMessage();
+  scoreContainer();
 }
   }, 1000);
 };
@@ -169,6 +172,7 @@ function sendMessage() {
   timer.textContent = "It's Over!";
   console.log(score);  
   scoreContainer();
+
 }
 
 
@@ -183,12 +187,11 @@ function scoreContainer() {
   answerIsCorrect.style.visibility = "hidden";
   answerIsCorrect.style.display= "none";
 
-  scoreContainer.style.visibility = "visible";
-  scoreContainer.style.display= "flex";
+  scoreContainerEl.style.visibility = "visible";
+  scoreContainerEl.style.display= "flex";
   finalScore.innerHTML = "Your final score is " + score;
   scoreContainer();
 }
-
 
 
 
