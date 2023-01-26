@@ -30,8 +30,8 @@ var currentQuestion = 0;
 var userScore = 0;
 var correctAnsrScore = 0;
 var wrongAnsrScore = 0;
+var initialsInput = document.querySelector(".initials");
 var initialsBtn = document.querySelector("initials-btn");
-var clearHscoresBtn;
 
 
 // arrey for all quiz questions and 4 answer options
@@ -193,6 +193,31 @@ function scoreContainer() {
   scoreContainer();
 }
 
+
+
+initialsBtn.addEventListener( "click", function() {
+addToHighScore();
+
+})
+
+
+const utils = require('./highScore.js');
+utils.doSomething();
+
+
+// /* utils.js */
+// module.exports = {
+//   doSomething: function() {
+//     // code
+//   },
+
+//   anotherOne: function() {
+//     // code
+//   }
+// };
+// /* index.js */
+// const utils = require('./utils.js');
+// utils.doSomething();
 
 
 // event.preventDefault();
