@@ -190,7 +190,7 @@ function scoreContainer() {
   scoreContainerEl.style.visibility = "visible";
   scoreContainerEl.style.display= "flex";
   finalScore.innerHTML = "Your final score is " + score;
-  scoreContainer();
+  
 }
 
 

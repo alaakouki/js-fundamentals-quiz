@@ -9,8 +9,9 @@ clearHighScoreBtn.addEventListener("click", function() {
 
 var highScoreEl = document.querySelector(".hs-container");
 
+// viewing high scores and saving it in local storage
 function viewHighScore() {
-    localStorage.setItem("highscores", initials);
+    localStorage.setItem("highscores", "highScoreHTML");
   var highScores =
   JSON.parse(window.localStorage.getItem("highscores")) || [];
   var highScoreHTML = "";
