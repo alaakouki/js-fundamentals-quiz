@@ -1,31 +1,5 @@
-var clearHighScoreBtn = document.querySelector("clear-highScore-btn");
-var scoreList = document.getElementById("score-list");
-
-
-/* utils.js */
-module.exports = {
-  doSomething: function() {
-    // code
-  },
-
-  anotherOne: function() {
-    // code
-  }
-};
-
-// /* utils.js */
-// module.exports = {
-//   doSomething: function() {
-//     // code
-//   },
-
-//   anotherOne: function() {
-//     // code
-//   }
-// };
-// /* index.js */
-// const utils = require('./utils.js');
-// utils.doSomething();
+var clearHighScoreBtn = document.querySelector(".clear-highScore-btn");
+var scoreList = document.getElementById("scores-list");
 
 
 clearHighScoreBtn.addEventListener("click", function() {
@@ -36,6 +10,7 @@ clearHighScoreBtn.addEventListener("click", function() {
 var highScoreEl = document.querySelector(".hs-container");
 
 function viewHighScore() {
+    localStorage.setItem("highscores", initials);
   var highScores =
   JSON.parse(window.localStorage.getItem("highscores")) || [];
   var highScoreHTML = "";
@@ -49,18 +24,4 @@ function viewHighScore() {
 
   scoreList.innerHTML = highScoreHTML;
 }
-
-function addToHighScore() {
-    var highScores =
-        JSON.parse(window.localStorage.getItem("hs-container")) || [];
-    var initials = initialsInput.value.trim();
-    if (initials !== "") {
-        var newScore = {
-            score, initials
-        };
-        // Saves information to localStorage
-        highScores.push(newScore);
-        window.localStorage.setItem("", JSON.stringify(highScores))
-    }
-    viewHighScore();
-}
+viewHighScore();

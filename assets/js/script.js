@@ -31,7 +31,7 @@ var userScore = 0;
 var correctAnsrScore = 0;
 var wrongAnsrScore = 0;
 var initialsInput = document.querySelector(".initials");
-var initialsBtn = document.querySelector("initials-btn");
+var initialsBtn = document.querySelector(".initials-btn");
 
 
 // arrey for all quiz questions and 4 answer options
@@ -178,7 +178,7 @@ function sendMessage() {
 
 function scoreContainer() {
 
-  questionAppearance.style.visibility = "hiddin";
+  questionAppearance.style.visibility = "hidden";
   questionAppearance.style.display= "none";
 
   answerIsWrong.style.visibility = "hidden";
@@ -201,23 +201,22 @@ addToHighScore();
 })
 
 
-const utils = require('./highScore.js');
-utils.doSomething();
-
-
-// /* utils.js */
-// module.exports = {
-//   doSomething: function() {
-//     // code
-//   },
-
-//   anotherOne: function() {
-//     // code
-//   }
-// };
-// /* index.js */
-// const utils = require('./utils.js');
-// utils.doSomething();
-
 
 // event.preventDefault();
+
+function addToHighScore() {
+  var highScores =
+      JSON.parse(window.localStorage.getItem("hs-container")) || [];
+  var initials = initialsInput.value.trim();
+  if (initials !== "") {
+      var newScore = {
+          score, initials
+      };
+      // Saves information to localStorage
+      highScores.push(newScore);
+      window.localStorage.setItem("", JSON.stringify(highScores))
+  }
+
+  window.location.replace("highScore.html");  
+
+}
